@@ -1,0 +1,61 @@
+{
+  "Baseline PPO": {
+    "annual_return": 0.13874642384450797,
+    "cumulative_return": 0.6806767324543013,
+    "annual_volatility": 0.1791394184077384,
+    "sharpe_ratio": 0.8154111317170823,
+    "sortino_ratio": 0.9363971522033933,
+    "calmar_ratio": 0.4684521762932644,
+    "max_drawdown": -0.2961805513262228,
+    "omega_ratio": 1.1754620858830198,
+    "skew": -0.6173817132510042,
+    "kurtosis": 13.255877524476372,
+    "tail_ratio": 0.8581325519252878,
+    "daily_var_95": -0.017345062966194924,
+    "mean_turnover": 0.044169944827901514
+  },
+  "MVO": {
+    "annual_return": 0.005988078169745892,
+    "cumulative_return": 0.024168315305711507,
+    "annual_volatility": 0.2197708116533733,
+    "sharpe_ratio": 0.1376371630583364,
+    "sortino_ratio": 0.15975287179546924,
+    "calmar_ratio": 0.015493281306677948,
+    "max_drawdown": -0.38649515562367653,
+    "omega_ratio": 1.0280088806919772,
+    "skew": -0.5173646038108132,
+    "kurtosis": 14.782589467044248,
+    "tail_ratio": 0.7954123532932446,
+    "daily_var_95": -0.02094599519017082,
+    "mean_turnover": 0.26731595927981705
+  },
+  "Regime-Switching PPO": {
+    "annual_return": 0.16289381121637048,
+    "cumulative_return": 0.8276799915599882,
+    "annual_volatility": 0.11179583309178892,
+    "sharpe_ratio": 1.4061916702224824,
+    "sortino_ratio": 1.7942874712089203,
+    "calmar_ratio": 1.0053707255287019,
+    "max_drawdown": -0.16202362678772875,
+    "omega_ratio": 1.2888025812063764,
+    "skew": -0.3327577788660269,
+    "kurtosis": 2.8971426046117847,
+    "tail_ratio": 0.9821003835712835,
+    "daily_var_95": -0.011839232777652649,
+    "mean_turnover": 0.035936444143421495
+  },
+  "Equal Weight": {
+    "annual_return": 0.1295706463243289,
+    "cumulative_return": 0.6272100515842491,
+    "annual_volatility": 0.19046885277124437,
+    "sharpe_ratio": 0.7355825888533648,
+    "sortino_ratio": 0.8168431806515818,
+    "calmar_ratio": 0.38474543596403715,
+    "max_drawdown": -0.3367698072874349,
+    "omega_ratio": 1.1658932841232386,
+    "skew": -0.6904499352420761,
+    "kurtosis": 18.311795217773593,
+    "tail_ratio": 0.8747512279517943,
+    "daily_var_95": -0.017161605743041843
+  }
+}

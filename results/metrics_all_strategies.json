@@ -1,0 +1,42 @@
+{
+  "Baseline PPO": {
+    "total_return": 0.9213167595501839,
+    "annualized_return": 0.11521978182214498,
+    "annual_volatility": 0.14787979774888696,
+    "sharpe_ratio": 0.8117899831641069,
+    "sortino_ratio": 1.0187754095304242,
+    "calmar_ratio": 0.39740255157343063,
+    "max_drawdown": -0.28993216416441425,
+    "daily_var_95": -0.014384848065674305
+  },
+  "Regime-Aware PPO": {
+    "total_return": 1.2412810589325818,
+    "annualized_return": 0.1442796877206587,
+    "annual_volatility": 0.15191017301534113,
+    "sharpe_ratio": 0.9635838896385396,
+    "sortino_ratio": 1.2655824397614441,
+    "calmar_ratio": 0.5294605978097331,
+    "max_drawdown": -0.2725031632523994,
+    "daily_var_95": -0.01567923091351986
+  },
+  "Regime-Switching PPO": {
+    "total_return": 0.8771709481413663,
+    "annualized_return": 0.11089904880326018,
+    "annual_volatility": 0.12720678431275526,
+    "sharpe_ratio": 0.8906438903994587,
+    "sortino_ratio": 1.1740355434022034,
+    "calmar_ratio": 0.423205489432385,
+    "max_drawdown": -0.2620453930122718,
+    "daily_var_95": -0.012715407460927962
+  },
+  "Equal Weight": {
+    "total_return": 0.8058356896406738,
+    "annualized_return": 0.10373484744388928,
+    "annual_volatility": 0.14187496837975244,
+    "sharpe_ratio": 0.7670087094320294,
+    "sortino_ratio": 0.9552079333962971,
+    "calmar_ratio": 0.3771118916310891,
+    "max_drawdown": -0.2750771050873363,
+    "daily_var_95": -0.013777815923094749
+  }
+}

@@ -4,6 +4,79 @@ import gymnasium as gym
 from gymnasium import spaces
 
 
+# ---------------------------------------------------------------------------
+# Reward calculators (stateful, reset each episode)
+# ---------------------------------------------------------------------------
+
+class DifferentialSharpe:
+    """Differential Sharpe Ratio reward (Moody & Saffell, 1998)."""
+
+    def __init__(self, eta: float = 1.0 / 252.0):
+        self.eta = eta
+        self.A = 0.0  # EMA of returns
+        self.B = 0.0  # EMA of squared returns
+
+    def reset(self):
+        self.A = 0.0
+        self.B = 0.0
+
+    def __call__(self, R_t: float) -> float:
+        delta_A = R_t - self.A
+        delta_B = R_t ** 2 - self.B
+        denom = self.B - self.A ** 2
+        if denom > 1e-12:
+            D_t = (self.B * delta_A - 0.5 * self.A * delta_B) / (denom ** 1.5)
+        else:
+            D_t = R_t
+        self.A += self.eta * delta_A
+        self.B += self.eta * delta_B
+        return float(D_t)
+
+
+class DifferentialSortino:
+    """Differential Sortino Ratio — penalises only downside deviation."""
+
+    def __init__(self, eta: float = 1.0 / 252.0):
+        self.eta = eta
+        self.A = 0.0  # EMA of returns
+        self.D = 0.0  # EMA of squared downside returns
+
+    def reset(self):
+        self.A = 0.0
+        self.D = 0.0
+
+    def __call__(self, R_t: float) -> float:
+        delta_A = R_t - self.A
+        downside_sq = min(R_t, 0.0) ** 2
+        delta_D = downside_sq - self.D
+        if self.D > 1e-12:
+            D_t = (self.D * delta_A - 0.5 * self.A * delta_D) / (self.D ** 1.5)
+        else:
+            D_t = R_t
+        self.A += self.eta * delta_A
+        self.D += self.eta * delta_D
+        return float(D_t)
+
+
+class RiskPenaltyReward:
+    """Risk-averse reward for high-volatility regimes — penalises variance."""
+
+    def __init__(self, eta: float = 1.0 / 252.0, risk_aversion: float = 5.0):
+        self.eta = eta
+        self.risk_aversion = risk_aversion
+        self.var_ema = 0.0
+
+    def reset(self):
+        self.var_ema = 0.0
+
+    def __call__(self, R_t: float) -> float:
+        penalty = self.risk_aversion * R_t ** 2
+        if R_t < 0:
+            penalty += self.risk_aversion * abs(R_t)
+        self.var_ema += self.eta * (R_t ** 2 - self.var_ema)
+        return float(R_t - penalty)
+
+
 class PortfolioEnv(gym.Env):
     metadata = {"render_modes": []}
     REGIME_COLS = ["p_low_vol", "p_med_vol", "p_high_vol"]
@@ -15,6 +88,7 @@ class PortfolioEnv(gym.Env):
         regimes_path: str = "data/regimes.csv",
         use_regimes: bool = True,
         transaction_cost_coef: float = 0.001,
+        reward_type: str = "default",
         start_date: str | None = None,
         end_date: str | None = None,
     ):
@@ -24,6 +98,15 @@ class PortfolioEnv(gym.Env):
         self.n_assets = len(self.assets)
         self.transaction_cost_coef = transaction_cost_coef
         self.use_regimes = use_regimes
+        self.reward_type = reward_type
+
+        # Stateful reward calculator (some types are stateless → None)
+        _reward_map = {
+            "differential_sharpe": DifferentialSharpe,
+            "sortino": DifferentialSortino,
+            "risk_parity": RiskPenaltyReward,
+        }
+        self._reward_calc = _reward_map[reward_type]() if reward_type in _reward_map else None
 
         features_df = pd.read_csv(features_path)
         returns_df = pd.read_csv(returns_path)
@@ -129,6 +212,8 @@ class PortfolioEnv(gym.Env):
         super().reset(seed=seed)
         self.current_step = 1
         self.prev_weights = np.ones(self.n_assets, dtype=np.float32) / self.n_assets
+        if self._reward_calc is not None:
+            self._reward_calc.reset()
         obs = self._get_observation(self.current_step)
         info = {"weights": self.prev_weights.copy()}
         return obs, info
@@ -141,7 +226,18 @@ class PortfolioEnv(gym.Env):
         portfolio_return = float(np.dot(new_weights, asset_returns))
 
         transaction_cost = float(np.sum(np.abs(new_weights - self.prev_weights)))
-        reward = portfolio_return - self.transaction_cost_coef * transaction_cost
+        tc_penalty = self.transaction_cost_coef * transaction_cost
+
+        # Compute reward based on reward_type
+        if self._reward_calc is not None:
+            base_reward = self._reward_calc(portfolio_return)
+        else:
+            base_reward = portfolio_return
+
+        if self.reward_type == "risk_parity":
+            reward = base_reward - 2.0 * tc_penalty   # extra turnover penalty
+        else:
+            reward = base_reward - tc_penalty
 
         self.prev_weights = new_weights
         self.current_step += 1

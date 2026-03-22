@@ -76,6 +76,52 @@ class DifferentialSharpe:
         return D_t
 
 
+class DifferentialSortino:
+    """Differential Sortino Ratio — penalises only downside deviation."""
+
+    def __init__(self, eta: float = 1.0 / 252.0):
+        self.eta = eta
+        self.A = 0.0   # EMA of returns
+        self.D = 0.0   # EMA of squared downside returns
+
+    def reset(self):
+        self.A = 0.0
+        self.D = 0.0
+
+    def __call__(self, portfolio_return: float) -> float:
+        R_t = portfolio_return
+        delta_A = R_t - self.A
+        downside_sq = min(R_t, 0.0) ** 2
+        delta_D = downside_sq - self.D
+        if self.D > 1e-12:
+            D_t = (self.D * delta_A - 0.5 * self.A * delta_D) / (self.D ** 1.5)
+        else:
+            D_t = R_t
+        self.A += self.eta * delta_A
+        self.D += self.eta * delta_D
+        return float(D_t)
+
+
+class RiskPenaltyReward:
+    """Risk-averse reward for high-volatility regimes — penalises variance and drawdowns."""
+
+    def __init__(self, eta: float = 1.0 / 252.0, risk_aversion: float = 5.0):
+        self.eta = eta
+        self.risk_aversion = risk_aversion
+        self.var_ema = 0.0
+
+    def reset(self):
+        self.var_ema = 0.0
+
+    def __call__(self, portfolio_return: float) -> float:
+        R_t = portfolio_return
+        penalty = self.risk_aversion * R_t ** 2
+        if R_t < 0:
+            penalty += self.risk_aversion * abs(R_t)
+        self.var_ema += self.eta * (R_t ** 2 - self.var_ema)
+        return float(R_t - penalty)
+
+
 class PortfolioEnv(gym.Env):
     """
     Portfolio trading environment with market replay.
@@ -134,6 +180,8 @@ class PortfolioEnv(gym.Env):
         
         # Reward calculator
         self.diff_sharpe = DifferentialSharpe(eta=eta)
+        self.diff_sortino = DifferentialSortino(eta=eta)
+        self.risk_penalty = RiskPenaltyReward(eta=eta)
         
         # Action space: n_assets + 1 continuous values, softmax'd to portfolio weights
         # Finite bounds required by SB3/Gymnasium; softmax is shift-invariant so this is fine
@@ -249,6 +297,8 @@ class PortfolioEnv(gym.Env):
         self._weights[-1] = 1.0  # start all cash
         
         self.diff_sharpe.reset()
+        self.diff_sortino.reset()
+        self.risk_penalty.reset()
         
         obs = self._get_observation()
         info = {"portfolio_value": self._portfolio_value, "weights": self._weights.copy()}
@@ -296,6 +346,10 @@ class PortfolioEnv(gym.Env):
         
         if self.reward_type == "differential_sharpe":
             reward = self.diff_sharpe(portfolio_return)
+        elif self.reward_type == "sortino":
+            reward = self.diff_sortino(portfolio_return)
+        elif self.reward_type == "risk_parity":
+            reward = self.risk_penalty(portfolio_return)
         elif self.reward_type == "log_return":
             reward = np.log(1 + portfolio_return + 1e-10)
         else:
