@@ -1,0 +1,257 @@
+{
+  "per_regime_metrics": {
+    "Baseline PPO": {
+      "Low Vol": {
+        "annual_return": 0.22902131074186327,
+        "cumulative_return": 0.7573845701964024,
+        "annual_volatility": 0.10092759263569434,
+        "sharpe_ratio": 2.094497696066095,
+        "sortino_ratio": 2.9509109027839697,
+        "calmar_ratio": 2.7718919187751667,
+        "max_drawdown": -0.08262274195851849,
+        "omega_ratio": 1.4167249965766258,
+        "skew": -0.3780749038894163,
+        "kurtosis": 1.3273666872851937,
+        "tail_ratio": 1.1165637665891612,
+        "daily_var_95": -0.009686425582197941,
+        "n_days": 689.0
+      },
+      "Med Vol": {
+        "annual_return": 0.17097053971523968,
+        "cumulative_return": 0.13273822097958243,
+        "annual_volatility": 0.16846080334734687,
+        "sharpe_ratio": 1.0210670886161215,
+        "sortino_ratio": 1.4817660718611676,
+        "calmar_ratio": 0.9650403670666605,
+        "max_drawdown": -0.17716413276568133,
+        "omega_ratio": 1.182789340096212,
+        "skew": -0.16486678308291555,
+        "kurtosis": 0.788662494793408,
+        "tail_ratio": 0.8055863409021848,
+        "daily_var_95": -0.0189629052925503,
+        "n_days": 199.0
+      },
+      "High Vol": {
+        "annual_return": -0.3012414152712444,
+        "cumulative_return": -0.15571742912076647,
+        "annual_volatility": 0.40714045405743976,
+        "sharpe_ratio": -0.676674236471553,
+        "sortino_ratio": -0.9635435730080678,
+        "calmar_ratio": -0.9848303655113863,
+        "max_drawdown": -0.30588152622083375,
+        "omega_ratio": 0.8912807994284302,
+        "skew": -0.2165768001310182,
+        "kurtosis": 1.9817636229770437,
+        "tail_ratio": 1.019519327402727,
+        "daily_var_95": -0.035680986366789715,
+        "n_days": 119.0
+      }
+    },
+    "MVO": {
+      "Low Vol": {
+        "annual_return": 0.04832816352789071,
+        "cumulative_return": 0.1379506593608315,
+        "annual_volatility": 0.13993553606602038,
+        "sharpe_ratio": 0.4074319985782687,
+        "sortino_ratio": 0.5202772775033676,
+        "calmar_ratio": 0.35069687859816473,
+        "max_drawdown": -0.1378060840491998,
+        "omega_ratio": 1.0724983604198448,
+        "skew": -0.6403042107361521,
+        "kurtosis": 2.4111271434549315,
+        "tail_ratio": 0.8253164547158339,
+        "daily_var_95": -0.015868985561097376,
+        "n_days": 690.0
+      },
+      "Med Vol": {
+        "annual_return": 0.11253525632331551,
+        "cumulative_return": 0.08786044400557147,
+        "annual_volatility": 0.17102007193750074,
+        "sharpe_ratio": 0.7090270507163041,
+        "sortino_ratio": 0.9686232120427317,
+        "calmar_ratio": 0.7117838848409466,
+        "max_drawdown": -0.15810312472649246,
+        "omega_ratio": 1.1242636372328694,
+        "skew": -0.45768638677951123,
+        "kurtosis": 1.226217475779972,
+        "tail_ratio": 0.7874631241382254,
+        "daily_var_95": -0.01864376730665366,
+        "n_days": 199.0
+      },
+      "High Vol": {
+        "annual_return": -0.3306332893460434,
+        "cumulative_return": -0.17267772295491268,
+        "annual_volatility": 0.4983118899611848,
+        "sharpe_ratio": -0.5561550453604087,
+        "sortino_ratio": -0.7616784372735604,
+        "calmar_ratio": -0.9932561545155417,
+        "max_drawdown": -0.33287816827806016,
+        "omega_ratio": 0.9062519539494549,
+        "skew": -0.1623006551051534,
+        "kurtosis": 2.590109990494511,
+        "tail_ratio": 1.0354183511072714,
+        "daily_var_95": -0.04574746289756643,
+        "n_days": 119.0
+      }
+    },
+    "Regime-Switching PPO": {
+      "Low Vol": {
+        "annual_return": 0.2257809701534783,
+        "cumulative_return": 0.7447452582595178,
+        "annual_volatility": 0.0975139333100462,
+        "sharpe_ratio": 2.137252067230574,
+        "sortino_ratio": 2.9861332287433386,
+        "calmar_ratio": 2.999385418401479,
+        "max_drawdown": -0.0752757444136033,
+        "omega_ratio": 1.4297807799450983,
+        "skew": -0.38328574386609804,
+        "kurtosis": 1.5007356882303258,
+        "tail_ratio": 1.139843503570248,
+        "daily_var_95": -0.00927435273431632,
+        "n_days": 689.0
+      },
+      "Med Vol": {
+        "annual_return": 0.15742093039052651,
+        "cumulative_return": 0.12237502976544912,
+        "annual_volatility": 0.16779983519008004,
+        "sharpe_ratio": 0.9550172549898032,
+        "sortino_ratio": 1.3887618857524786,
+        "calmar_ratio": 0.8933082167594807,
+        "max_drawdown": -0.17622241398559912,
+        "omega_ratio": 1.1707625818694505,
+        "skew": -0.14206274580326028,
+        "kurtosis": 0.8004628037154169,
+        "tail_ratio": 0.8059981512672354,
+        "daily_var_95": -0.01895159856327214,
+        "n_days": 199.0
+      },
+      "High Vol": {
+        "annual_return": -0.1359588966950417,
+        "cumulative_return": -0.06668094067622377,
+        "annual_volatility": 0.05865466839922468,
+        "sharpe_ratio": -2.461215326384469,
+        "sortino_ratio": -1.80894276155092,
+        "calmar_ratio": -2.782156891625761,
+        "max_drawdown": -0.04886816308033359,
+        "omega_ratio": 0.3703577861066061,
+        "skew": -5.724797166824753,
+        "kurtosis": 34.74938762650097,
+        "tail_ratio": 0.6643060855177254,
+        "daily_var_95": -0.0022472950551348,
+        "n_days": 119.0
+      }
+    },
+    "Equal Weight": {
+      "Low Vol": {
+        "annual_return": 0.22991700508309254,
+        "cumulative_return": 0.7608885395728349,
+        "annual_volatility": 0.0974125086481172,
+        "sharpe_ratio": 2.173978301105213,
+        "sortino_ratio": 3.0811611316365775,
+        "calmar_ratio": 2.9675656361382305,
+        "max_drawdown": -0.0774766368376908,
+        "omega_ratio": 1.435240445488786,
+        "skew": -0.3586503008759707,
+        "kurtosis": 1.2941800517413,
+        "tail_ratio": 1.1549355947379338,
+        "daily_var_95": -0.00914830158253126,
+        "n_days": 689.0
+      },
+      "Med Vol": {
+        "annual_return": 0.18350720968031764,
+        "cumulative_return": 0.1423042388830238,
+        "annual_volatility": 0.17124230618806602,
+        "sharpe_ratio": 1.069429254996815,
+        "sortino_ratio": 1.5766493135326953,
+        "calmar_ratio": 1.0233129998543362,
+        "max_drawdown": -0.17932656939415315,
+        "omega_ratio": 1.191592741483814,
+        "skew": -0.12092659540580299,
+        "kurtosis": 0.7921335664431197,
+        "tail_ratio": 0.8278173890428929,
+        "daily_var_95": -0.01894048463151149,
+        "n_days": 199.0
+      },
+      "High Vol": {
+        "annual_return": -0.36169513150449717,
+        "cumulative_return": -0.19103457011574765,
+        "annual_volatility": 0.4513059669486879,
+        "sharpe_ratio": -0.7684186852331015,
+        "sortino_ratio": -1.0486101520196713,
+        "calmar_ratio": -1.0474818401124526,
+        "max_drawdown": -0.3452996678831848,
+        "omega_ratio": 0.873024492521703,
+        "skew": -0.2217081527678532,
+        "kurtosis": 2.669959966359763,
+        "tail_ratio": 0.9587226865573347,
+        "daily_var_95": -0.041192440645506125,
+        "n_days": 119.0
+      }
+    }
+  },
+  "covid_case_study": {
+    "Baseline PPO": {
+      "crash_return": -0.2938398672661384,
+      "crash_volatility": 0.6097510107745413,
+      "crash_max_dd": -0.29608506612979923,
+      "crash_n_days": 24,
+      "recovery_return": 0.3331252787423351,
+      "recovery_n_days": 69
+    },
+    "MVO": {
+      "crash_return": -0.28584850028033226,
+      "crash_volatility": 0.8530364971295982,
+      "crash_max_dd": -0.35455239626657,
+      "crash_n_days": 24,
+      "recovery_return": 0.17113158059445954,
+      "recovery_n_days": 69
+    },
+    "Regime-Switching PPO": {
+      "crash_return": -0.04078200874075355,
+      "crash_volatility": 0.08995344433633387,
+      "crash_max_dd": -0.04357850254354989,
+      "crash_n_days": 24,
+      "recovery_return": 0.01246767101607471,
+      "recovery_n_days": 69
+    },
+    "Equal Weight": {
+      "crash_return": -0.3346417219600213,
+      "crash_volatility": 0.7053580837907926,
+      "crash_max_dd": -0.33676980728743444,
+      "crash_n_days": 24,
+      "recovery_return": 0.3602526437279403,
+      "recovery_n_days": 69
+    }
+  },
+  "bic_model_selection": {
+    "2": {
+      "log_likelihood": 62976872.61265094,
+      "bic": -125953580.6615369,
+      "aic": -125953703.22530188,
+      "n_params": 21
+    },
+    "3": {
+      "log_likelihood": 64939133.016351745,
+      "bic": -129877991.75976187,
+      "aic": -129878196.03270349,
+      "n_params": 35
+    },
+    "4": {
+      "log_likelihood": 64654211.99831478,
+      "bic": -129308024.34177178,
+      "aic": -129308321.99662957,
+      "n_params": 51
+    },
+    "5": {
+      "log_likelihood": 64062958.86980937,
+      "bic": -128125377.03010526,
+      "aic": -128125779.73961873,
+      "n_params": 69
+    }
+  },
+  "regime_distribution": {
+    "Low Vol": 690,
+    "Med Vol": 199,
+    "High Vol": 119
+  }
+}
