@@ -65,13 +65,22 @@ def load_equity_curves():
 
 
 def get_regimes_for_test(dataset):
-    """Fit HMM on train data, predict regimes for all dates."""
+    """Load saved HMM (or fit and save), predict regimes for all dates."""
+    hmm_path = Path("models/hmm_detector.pkl")
     sp500_prices = dataset["sp500_prices"]
     features = compute_hmm_features(sp500_prices)
-    train_features = features.loc[:"2016-12-31"]
 
-    detector = RegimeDetector(n_regimes=3, random_state=42)
-    detector.fit(train_features)
+    if hmm_path.exists():
+        print("  Loading saved HMM from", hmm_path)
+        with open(hmm_path, "rb") as f:
+            detector = pickle.load(f)
+    else:
+        train_features = features.loc[:"2016-12-31"]
+        detector = RegimeDetector(n_regimes=3, random_state=42)
+        detector.fit(train_features)
+        with open(hmm_path, "wb") as f:
+            pickle.dump(detector, f)
+        print("  Saved HMM to", hmm_path)
 
     all_regimes = detector.predict(features)
     return all_regimes, detector, features

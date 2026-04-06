@@ -1,0 +1,361 @@
+{
+  "n_transitions": 16,
+  "n_escalations": 7,
+  "n_de_escalations": 9,
+  "avg_persistence_escalation_days": 50.714285714285715,
+  "avg_persistence_de_escalation_days": 119.22222222222223,
+  "transitions": [
+    {
+      "transition_id": 1,
+      "date": "2018-02-02",
+      "from": "Low Vol",
+      "to": "High Vol",
+      "realized_vol_annualized": 0.15008981886769066,
+      "prob_at_switch": 0.5407747983118435,
+      "prob_1d_before": 0.011095822919320455,
+      "detection_lag": {
+        "days_before_p10": 0,
+        "days_before_p25": 0,
+        "days_before_p50": 0
+      },
+      "persistence_days": 13,
+      "transition_cost": {
+        "window_return_rs": -0.05101940364917845,
+        "window_return_baseline": -0.0685246332477234,
+        "pre_switch_return_rs": -0.007689012673937623,
+        "post_switch_return_rs": -0.043666140482835236,
+        "advantage": 0.017505229598544947
+      }
+    },
+    {
+      "transition_id": 2,
+      "date": "2018-02-15",
+      "from": "High Vol",
+      "to": "Med Vol",
+      "realized_vol_annualized": 0.3600560707259877,
+      "prob_at_switch": 0.6182245191444729,
+      "prob_1d_before": 0.3982964539560865,
+      "detection_lag": {
+        "days_before_p10": 2,
+        "days_before_p25": 1,
+        "days_before_p50": 0
+      },
+      "persistence_days": 81,
+      "transition_cost": {
+        "window_return_rs": 0.015496386646370874,
+        "window_return_baseline": 0.016801139513484387,
+        "pre_switch_return_rs": 0.0,
+        "post_switch_return_rs": 0.015496386646370874,
+        "advantage": -0.0013047528671135122
+      }
+    },
+    {
+      "transition_id": 3,
+      "date": "2018-05-07",
+      "from": "Med Vol",
+      "to": "Low Vol",
+      "realized_vol_annualized": 0.12952490211649173,
+      "prob_at_switch": 0.7834466496762549,
+      "prob_1d_before": 0.5675823833504258,
+      "detection_lag": {
+        "days_before_p10": 6,
+        "days_before_p25": 4,
+        "days_before_p50": 3
+      },
+      "persistence_days": 156,
+      "transition_cost": {
+        "window_return_rs": 0.0066402771703968355,
+        "window_return_baseline": 0.006440305848901762,
+        "pre_switch_return_rs": -0.008027357583456074,
+        "post_switch_return_rs": 0.014786329911398388,
+        "advantage": 0.0001999713214950738
+      }
+    },
+    {
+      "transition_id": 4,
+      "date": "2018-10-10",
+      "from": "Low Vol",
+      "to": "Med Vol",
+      "realized_vol_annualized": 0.1722471992514773,
+      "prob_at_switch": 0.2720610377359267,
+      "prob_1d_before": 0.0027547283140882763,
+      "detection_lag": {
+        "days_before_p10": 0,
+        "days_before_p25": 0,
+        "days_before_p50": null
+      },
+      "persistence_days": 114,
+      "transition_cost": {
+        "window_return_rs": -0.025423653099805765,
+        "window_return_baseline": -0.03153276818887174,
+        "pre_switch_return_rs": -0.008490440094679697,
+        "post_switch_return_rs": -0.01707821456279557,
+        "advantage": 0.006109115089065975
+      }
+    },
+    {
+      "transition_id": 5,
+      "date": "2019-02-01",
+      "from": "Med Vol",
+      "to": "Low Vol",
+      "realized_vol_annualized": 0.1458346643310415,
+      "prob_at_switch": 0.7167073618871567,
+      "prob_1d_before": 0.1870682779890471,
+      "detection_lag": {
+        "days_before_p10": 1,
+        "days_before_p25": 0,
+        "days_before_p50": 0
+      },
+      "persistence_days": 119,
+      "transition_cost": {
+        "window_return_rs": 0.02461322434824842,
+        "window_return_baseline": 0.02285296672222037,
+        "pre_switch_return_rs": 0.023025382311554488,
+        "post_switch_return_rs": 0.0015521042431090315,
+        "advantage": 0.00176025762602805
+      }
+    },
+    {
+      "transition_id": 6,
+      "date": "2019-05-31",
+      "from": "Low Vol",
+      "to": "Med Vol",
+      "realized_vol_annualized": 0.10712590595367681,
+      "prob_at_switch": 0.4632473123411782,
+      "prob_1d_before": 0.10910554414417918,
+      "detection_lag": {
+        "days_before_p10": 1,
+        "days_before_p25": 0,
+        "days_before_p50": null
+      },
+      "persistence_days": 19,
+      "transition_cost": {
+        "window_return_rs": 0.011897669662305432,
+        "window_return_baseline": 0.013544555186318252,
+        "pre_switch_return_rs": -0.01907977581248954,
+        "post_switch_return_rs": 0.03157998449920174,
+        "advantage": -0.00164688552401282
+      }
+    },
+    {
+      "transition_id": 7,
+      "date": "2019-06-19",
+      "from": "Med Vol",
+      "to": "Low Vol",
+      "realized_vol_annualized": 0.06966166461987172,
+      "prob_at_switch": 0.6506007136206146,
+      "prob_1d_before": 0.5057149552901729,
+      "detection_lag": {
+        "days_before_p10": 7,
+        "days_before_p25": 5,
+        "days_before_p50": 1
+      },
+      "persistence_days": 56,
+      "transition_cost": {
+        "window_return_rs": 0.009047404167957795,
+        "window_return_baseline": 0.008033583842904868,
+        "pre_switch_return_rs": 0.007774070212914097,
+        "post_switch_return_rs": 0.0012635113292556177,
+        "advantage": 0.0010138203250529276
+      }
+    },
+    {
+      "transition_id": 8,
+      "date": "2019-08-14",
+      "from": "Low Vol",
+      "to": "Med Vol",
+      "realized_vol_annualized": 0.2718188551636912,
+      "prob_at_switch": 0.8873234971299453,
+      "prob_1d_before": 0.10298437995799302,
+      "detection_lag": {
+        "days_before_p10": 1,
+        "days_before_p25": 0,
+        "days_before_p50": 0
+      },
+      "persistence_days": 29,
+      "transition_cost": {
+        "window_return_rs": 0.019646978351215205,
+        "window_return_baseline": 0.01817648891989343,
+        "pre_switch_return_rs": 0.014592743279294051,
+        "post_switch_return_rs": 0.00498154072695689,
+        "advantage": 0.0014704894313217753
+      }
+    },
+    {
+      "transition_id": 9,
+      "date": "2019-09-12",
+      "from": "Med Vol",
+      "to": "Low Vol",
+      "realized_vol_annualized": 0.10336318964729187,
+      "prob_at_switch": 0.3599923731439123,
+      "prob_1d_before": 0.07217023364131339,
+      "detection_lag": {
+        "days_before_p10": 0,
+        "days_before_p25": 0,
+        "days_before_p50": null
+      },
+      "persistence_days": 165,
+      "transition_cost": {
+        "window_return_rs": 0.016453661202810332,
+        "window_return_baseline": 0.01629456894051895,
+        "pre_switch_return_rs": 0.012972645837134422,
+        "post_switch_return_rs": 0.003436435702367069,
+        "advantage": 0.00015909226229138262
+      }
+    },
+    {
+      "transition_id": 10,
+      "date": "2020-02-24",
+      "from": "Low Vol",
+      "to": "High Vol",
+      "realized_vol_annualized": 0.19269525093926532,
+      "prob_at_switch": 0.9913161040359921,
+      "prob_1d_before": 0.020393173622721743,
+      "detection_lag": {
+        "days_before_p10": 0,
+        "days_before_p25": 0,
+        "days_before_p50": 0
+      },
+      "persistence_days": 137,
+      "transition_cost": {
+        "window_return_rs": -0.056010184710180155,
+        "window_return_baseline": -0.07350623930709721,
+        "pre_switch_return_rs": -0.005753292529798393,
+        "post_switch_return_rs": -0.05054770793081864,
+        "advantage": 0.017496054596917054
+      }
+    },
+    {
+      "transition_id": 11,
+      "date": "2020-07-10",
+      "from": "High Vol",
+      "to": "Low Vol",
+      "realized_vol_annualized": 0.20879076970134836,
+      "prob_at_switch": 0.8947448680765278,
+      "prob_1d_before": 0.031868473078425115,
+      "detection_lag": {
+        "days_before_p10": 0,
+        "days_before_p25": 0,
+        "days_before_p50": 0
+      },
+      "persistence_days": 55,
+      "transition_cost": {
+        "window_return_rs": 0.014500797910998564,
+        "window_return_baseline": 0.039540454045601914,
+        "pre_switch_return_rs": 1.7603731381488075e-06,
+        "post_switch_return_rs": 0.014499012014189239,
+        "advantage": -0.02503965613460335
+      }
+    },
+    {
+      "transition_id": 12,
+      "date": "2020-09-03",
+      "from": "Low Vol",
+      "to": "High Vol",
+      "realized_vol_annualized": 0.22487935433405706,
+      "prob_at_switch": 0.9998732498796922,
+      "prob_1d_before": 0.3697302796165174,
+      "detection_lag": {
+        "days_before_p10": 1,
+        "days_before_p25": 1,
+        "days_before_p50": 0
+      },
+      "persistence_days": 21,
+      "transition_cost": {
+        "window_return_rs": 0.004996011713756632,
+        "window_return_baseline": -0.026121656216509526,
+        "pre_switch_return_rs": 0.027210691253192865,
+        "post_switch_return_rs": -0.021626215272676275,
+        "advantage": 0.031117667930266157
+      }
+    },
+    {
+      "transition_id": 13,
+      "date": "2020-09-24",
+      "from": "High Vol",
+      "to": "Med Vol",
+      "realized_vol_annualized": 0.18007048780048446,
+      "prob_at_switch": 0.3091886780158229,
+      "prob_1d_before": 0.07270277485818852,
+      "detection_lag": {
+        "days_before_p10": 0,
+        "days_before_p25": 0,
+        "days_before_p50": null
+      },
+      "persistence_days": 26,
+      "transition_cost": {
+        "window_return_rs": -0.02494178930717883,
+        "window_return_baseline": -0.0241099688299804,
+        "pre_switch_return_rs": -0.02044549769423265,
+        "post_switch_return_rs": -0.004590139295324924,
+        "advantage": -0.0008318204771984306
+      }
+    },
+    {
+      "transition_id": 14,
+      "date": "2020-10-20",
+      "from": "Med Vol",
+      "to": "Low Vol",
+      "realized_vol_annualized": 0.1693649171915236,
+      "prob_at_switch": 0.859012882862266,
+      "prob_1d_before": 0.5938266965159595,
+      "detection_lag": {
+        "days_before_p10": 8,
+        "days_before_p25": 6,
+        "days_before_p50": 4
+      },
+      "persistence_days": 8,
+      "transition_cost": {
+        "window_return_rs": -0.037955562973613244,
+        "window_return_baseline": -0.039164348564914686,
+        "pre_switch_return_rs": -0.023656652055250804,
+        "post_switch_return_rs": -0.014645371373156912,
+        "advantage": 0.0012087855913014423
+      }
+    },
+    {
+      "transition_id": 15,
+      "date": "2020-10-28",
+      "from": "Low Vol",
+      "to": "Med Vol",
+      "realized_vol_annualized": 0.2100958625969829,
+      "prob_at_switch": 0.9893895286315648,
+      "prob_1d_before": 0.20776288859630426,
+      "detection_lag": {
+        "days_before_p10": 14,
+        "days_before_p25": 14,
+        "days_before_p50": 14
+      },
+      "persistence_days": 22,
+      "transition_cost": {
+        "window_return_rs": -0.0033365101609377223,
+        "window_return_baseline": -0.005875597780327313,
+        "pre_switch_return_rs": -0.019971783471381066,
+        "post_switch_return_rs": 0.01697427995427292,
+        "advantage": 0.0025390876193895906
+      }
+    },
+    {
+      "transition_id": 16,
+      "date": "2020-11-19",
+      "from": "Med Vol",
+      "to": "Low Vol",
+      "realized_vol_annualized": 0.14454601237710393,
+      "prob_at_switch": 0.8235600130776352,
+      "prob_1d_before": 0.6065621847969569,
+      "detection_lag": {
+        "days_before_p10": 9,
+        "days_before_p25": 6,
+        "days_before_p50": 2
+      },
+      "persistence_days": 407,
+      "transition_cost": {
+        "window_return_rs": 0.03299247741179845,
+        "window_return_baseline": 0.03170633839747805,
+        "pre_switch_return_rs": 0.0035287200485421,
+        "post_switch_return_rs": 0.02936015360061761,
+        "advantage": 0.0012861390143203977
+      }
+    }
+  ]
+}

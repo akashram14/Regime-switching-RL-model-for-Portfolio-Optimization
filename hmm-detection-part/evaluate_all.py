@@ -149,13 +149,24 @@ def evaluate_equal_weight(dataset: dict, test_dates) -> dict:
 def evaluate_regime_switching(dataset: dict, test_dates) -> dict:
     print("  Running Regime-Switching PPO ...")
 
-    # --- HMM setup ---
+    # --- HMM setup (save/load for reproducibility) ---
+    hmm_path = Path("models/hmm_detector.pkl")
     sp500_prices = dataset["sp500_prices"]
     features = compute_hmm_features(sp500_prices)
-    train_features = features.loc[:"2016-12-31"]
 
-    detector = RegimeDetector(n_regimes=3, random_state=42)
-    detector.fit(train_features)
+    if hmm_path.exists():
+        import pickle as _pkl
+        print("    Loading saved HMM from", hmm_path)
+        with open(hmm_path, "rb") as f:
+            detector = _pkl.load(f)
+    else:
+        train_features = features.loc[:"2016-12-31"]
+        detector = RegimeDetector(n_regimes=3, random_state=42)
+        detector.fit(train_features)
+        import pickle as _pkl
+        with open(hmm_path, "wb") as f:
+            _pkl.dump(detector, f)
+        print("    Saved HMM to", hmm_path)
 
     # Predict regimes for all available dates
     all_regimes = detector.predict(features)   # Series: date → 0/1/2
